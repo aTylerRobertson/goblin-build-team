@@ -1,0 +1,28 @@
+name: 'build! build! build!'
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'grow! grow! grow!'
+        run: |
+          git config --local user.email "tylerdotdotdot@gmail.com"
+          git config --local user.name "Tyler Robertson"
+          materials=("🌲" "🌲" "🌲" "🌱" "🌱" "🏰" "🚧" "🏡" "🏭" "🏭" "🏠" "⛺️" "🏕" "⛰" "🏔" "🗻" "🌋" "🌵" "🍀" "🌴" "🌲" "🪵" "🍄" "🍄" "🌈" "🏘" "🏚" "🏗")
+          random=$$
+          toBuild=${materials[$random % ${#materials[@]}]}
+          echo $toBuild >> ./README.md
+          git add .
+          git commit -m "$toBuild" --allow-empty
+      - name: 'push! push! push!'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: 'true'
+          branch: 'tower'
