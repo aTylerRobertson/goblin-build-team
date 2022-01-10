@@ -15,8 +15,7 @@ jobs:
           git config --local user.email "tylerdotdotdot@gmail.com"
           git config --local user.name "Tyler Robertson"
           materials=("🌲" "🌲" "🌲" "🌱" "🌱" "🏰" "🚧" "🏡" "🏭" "🏭" "🏠" "⛺️" "🏕" "⛰" "🏔" "🗻" "🌋" "🌵" "🍀" "🌴" "🌲" "🪵" "🍄" "🍄" "🌈" "🏘" "🏚" "🏗")
-          random=$$
-          toBuild=${materials[$random % ${#materials[@]}]}
+          toBuild=${materials[$RANDOM % ${#materials[@]}]}
           echo $toBuild >> ./README.md
           git add .
           git commit -m "$toBuild" --allow-empty
